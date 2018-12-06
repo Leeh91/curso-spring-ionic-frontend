@@ -25,9 +25,7 @@ export class CategoriesPage {
     this.categoryService.findAll()
     .subscribe(response => {
       this.items = response;
-    }, error => {
-      console.error(error);
-    })
+    }, error => {})
     console.log('ionViewDidLoad CategoriesPage');
   }
 
