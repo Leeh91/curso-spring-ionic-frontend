@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CategoryService } from '../../services/domain/category.service';
+import { CategoryDTO } from '../../models/Category.dto';
+import { API_CONFIG } from '../../config/api.config';
 
 @IonicPage()
 @Component({
@@ -9,6 +11,9 @@ import { CategoryService } from '../../services/domain/category.service';
 })
 export class CategoriesPage {
 
+  items: CategoryDTO[];
+  bucketURL: string = API_CONFIG.bucketBaseURL;
+  
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -19,7 +24,7 @@ export class CategoriesPage {
 
     this.categoryService.findAll()
     .subscribe(response => {
-      console.log(response);
+      this.items = response;
     }, error => {
       console.error(error);
     })
