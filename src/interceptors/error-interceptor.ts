@@ -87,6 +87,8 @@ export class ErrorInterceptor implements HttpInterceptor{
             title: 'Erro 422: Validação',
             message: this.listErrors(errorObj.errors)
         })
+
+        alert.present();
     }
 
     private listErrors(messages: FieldMessage[]) : string {
